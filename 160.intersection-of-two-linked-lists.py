@@ -13,6 +13,15 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        
+        hash = {}
+        while headA:
+            if headA.val not in hash: hash[headA.val] = []
+            hash[headA.val].append(headA)
+            headA = headA.next
+        while headB:
+            if headB.val in hash and headB in hash[headB.val]:
+                return headB
+            headB = headB.next
+        return None
 # @lc code=end
 
