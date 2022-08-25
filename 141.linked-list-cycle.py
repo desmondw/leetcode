@@ -13,6 +13,14 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        
+        if not head:
+            return False
+        elif head == True:
+            return True
+
+        swap = head.next
+        head.next = True
+        return self.hasCycle(swap)
+
 # @lc code=end
 
