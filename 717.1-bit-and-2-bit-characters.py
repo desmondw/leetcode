@@ -7,13 +7,12 @@
 # @lc code=start
 class Solution:
     def isOneBitCharacter(self, bits: List[int]) -> bool:
-        return len(bits)<2 or bits[-2] == bits[-1] == 0
-        # num = int(''.join(str(bits)[1:-1].split(', ')), 2)
-        # print(num)
-
-        # if num % 2 == 0:
-        #     return False
-        # return True
+        carry = ''
+        for bit in bits[:-1]:
+            carry += str(bit)
+            if len(carry) == 2 or carry == '0':
+                carry = ''
+        return not len(carry)
 
 # @lc code=end
 
