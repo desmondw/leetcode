@@ -9,15 +9,11 @@ import math
 class Solution:
     def checkPerfectNumber(self, num: int) -> bool:
         if num == 1: return False
-
         divTotal = 1
-        i = 2
-        end = math.ceil(num/2)
-        while i < end:
-            if num % i == 0:
-                divTotal += i + int(num/i)
-                end = math.ceil(num/i)
-            i += 1
-        return divTotal == num
-# @lc code=end
 
+        for i in range(2, int(math.sqrt(num))+1):
+            if num % i == 0:
+                divTotal += i + num/i
+            i += 1
+        return int(divTotal) == num
+# @lc code=end
